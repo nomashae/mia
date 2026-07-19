@@ -191,9 +191,32 @@
     .region-water-s { --region-color: #2a6e8e; }
     .region-air-e   { --region-color: #7bafd8; }
     .region-air-w   { --region-color: #5B9BBF; }
+    .region-air-n   { --region-color: #9fc9e0; }
+    .region-air-s   { --region-color: #4a8fb8; }
     .region-earth   { --region-color: #4A7C59; }
     .region-fire    { --region-color: #C4622D; }
     .region-capital { --region-color: #9B7FBF; }
+
+    /* FLAG + ICON */
+    .region-flag-wrap {
+      width: 40px; height: 52px; border-radius: 4px;
+      margin-bottom: 1rem; overflow: hidden;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--region-color, var(--accent)) 12%, transparent);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+      transition: border-color var(--t);
+    }
+    .region-flag-wrap img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .region-flag-wrap img.hidden { display: none; }
+    .region-flag-wrap .region-icon-fallback {
+      display: none; align-items: center; justify-content: center;
+      width: 100%; height: 100%;
+    }
+    .region-flag-wrap .region-icon-fallback.show { display: flex; }
+    .region-flag-wrap .region-icon-fallback i { font-size: 1rem; color: var(--region-color, var(--accent)); }
 
     .region-icon {
       width: 40px; height: 40px; border-radius: 10px;
@@ -265,7 +288,7 @@
     .docs {
       display: block;
       width: fit-content;
-      
+
       text-decoration: none;
       background: var(--accent);
       border: none;
@@ -331,7 +354,7 @@
         <div class="resp-card">
           <div class="resp-icon"><i class="fa-solid fa-map-location-dot"></i></div>
           <div class="resp-title">Regional Administration</div>
-          <div class="resp-desc">Oversees the six ATLA-inspired regions of Nomashae — ensuring each territory is managed, represented, and developed in line with the Republic's values.</div>
+          <div class="resp-desc">Oversees the eight ATLA-inspired regions of Nomashae — ensuring each territory is managed, represented, and developed in line with the Republic's values.</div>
         </div>
         <div class="resp-card">
           <div class="resp-icon"><i class="fa-solid fa-comments"></i></div>
@@ -348,54 +371,95 @@
       <div class="sec-header">
         <span class="sec-label">Territory</span>
         <h2 class="sec-title">Regions of Nomashae</h2>
-        <p class="sec-sub">Six regions inspired by the world of Avatar: The Last Airbender</p>
+        <p class="sec-sub">Eight regions inspired by the world of Avatar: The Last Airbender</p>
       </div>
       <div class="regions-grid">
 
         <div class="region-card region-capital">
-          <div class="region-icon"><i class="fa-solid fa-city"></i></div>
+          <div class="region-flag-wrap">
+            <img src="flags/capital.png" alt="Uni Citi flag" onerror="this.classList.add('hidden'); this.nextElementSibling.classList.add('show');">
+            <div class="region-icon-fallback"><i class="fa-solid fa-city"></i></div>
+          </div>
           <span class="region-element">Capital · All Elements</span>
           <div class="region-name">Uni Citi</div>
           <div class="region-desc">The United City — capital of Nomashae and seat of the government. Where all four elements converge and all citizens are represented equally.</div>
         </div>
 
         <div class="region-card region-water-n">
-          <div class="region-icon"><i class="fa-solid fa-snowflake"></i></div>
+          <div class="region-flag-wrap">
+            <img src="flags/water-north.png" alt="Northern Water Tribe flag" onerror="this.classList.add('hidden'); this.nextElementSibling.classList.add('show');">
+            <div class="region-icon-fallback"><i class="fa-solid fa-snowflake"></i></div>
+          </div>
           <span class="region-element">Water · Northern</span>
           <div class="region-name">Northern Water Tribe</div>
           <div class="region-desc">Nomashae's northern territory, inspired by the grand Northern Water Tribe. Known for its resilience, adaptability, and the strength of its waterways.</div>
         </div>
 
         <div class="region-card region-water-s">
-          <div class="region-icon"><i class="fa-solid fa-water"></i></div>
+          <div class="region-flag-wrap">
+            <img src="flags/water-south.png" alt="Southern Water Tribe flag" onerror="this.classList.add('hidden'); this.nextElementSibling.classList.add('show');">
+            <div class="region-icon-fallback"><i class="fa-solid fa-water"></i></div>
+          </div>
           <span class="region-element">Water · Southern</span>
           <div class="region-name">Southern Water Tribe</div>
           <div class="region-desc">The southern reaches of Nomashae, reflecting the close-knit spirit of the Southern Water Tribe. Community-driven and deeply connected to the land.</div>
         </div>
 
         <div class="region-card region-air-e">
-          <div class="region-icon"><i class="fa-solid fa-wind"></i></div>
+          <div class="region-flag-wrap">
+            <img src="flags/air-east.png" alt="Eastern Air Temple flag" onerror="this.classList.add('hidden'); this.nextElementSibling.classList.add('show');">
+            <div class="region-icon-fallback"><i class="fa-solid fa-wind"></i></div>
+          </div>
           <span class="region-element">Air · Eastern</span>
           <div class="region-name">Eastern Air Temple</div>
           <div class="region-desc">High and open, the Eastern Air Temple region embodies freedom and elevation. A place of reflection, peace, and the nomadic spirit of the Air Nomads.</div>
         </div>
 
         <div class="region-card region-air-w">
-          <div class="region-icon"><i class="fa-solid fa-feather"></i></div>
+          <div class="region-flag-wrap">
+            <img src="flags/air-west.png" alt="Western Air Temple flag" onerror="this.classList.add('hidden'); this.nextElementSibling.classList.add('show');">
+            <div class="region-icon-fallback"><i class="fa-solid fa-feather"></i></div>
+          </div>
           <span class="region-element">Air · Western</span>
           <div class="region-name">Western Air Temple</div>
           <div class="region-desc">The western counterpart to the Eastern Air Temple. Known for its unique inverted architecture and its culture of harmony and open skies.</div>
         </div>
 
+        <div class="region-card region-air-n">
+          <div class="region-flag-wrap">
+            <img src="flags/air-north.png" alt="Northern Air Temple flag" onerror="this.classList.add('hidden'); this.nextElementSibling.classList.add('show');">
+            <div class="region-icon-fallback"><i class="fa-solid fa-cloud"></i></div>
+          </div>
+          <span class="region-element">Air · Northern</span>
+          <div class="region-name">Northern Air Temple</div>
+          <div class="region-desc">Perched high above the northern ranges, this temple region carries on the Air Nomad tradition of solitude, meditation, and distance from worldly conflict.</div>
+        </div>
+
+        <div class="region-card region-air-s">
+          <div class="region-flag-wrap">
+            <img src="flags/air-south.png" alt="Southern Air Temple flag" onerror="this.classList.add('hidden'); this.nextElementSibling.classList.add('show');">
+            <div class="region-icon-fallback"><i class="fa-solid fa-dove"></i></div>
+          </div>
+          <span class="region-element">Air · Southern</span>
+          <div class="region-name">Southern Air Temple</div>
+          <div class="region-desc">The southernmost of the Air Temple regions, historically tied to the earliest Air Nomad settlements. Quiet, remote, and steeped in tradition.</div>
+        </div>
+
         <div class="region-card region-earth">
-          <div class="region-icon"><i class="fa-solid fa-mountain"></i></div>
+          <div class="region-flag-wrap">
+            <img src="flags/earth.png" alt="Earth Kingdom flag" onerror="this.classList.add('hidden'); this.nextElementSibling.classList.add('show');">
+            <div class="region-icon-fallback"><i class="fa-solid fa-mountain"></i></div>
+          </div>
           <span class="region-element">Earth · Central</span>
           <div class="region-name">Earth Kingdom</div>
           <div class="region-desc">The vast and enduring heartland of Nomashae. The Earth Kingdom region is home to the Republic's most stable and established settlements.</div>
         </div>
 
         <div class="region-card region-fire">
-          <div class="region-icon"><i class="fa-solid fa-fire"></i></div>
+          <div class="region-flag-wrap">
+            <img src="flags/fire.png" alt="Fire Nation flag" onerror="this.classList.add('hidden'); this.nextElementSibling.classList.add('show');">
+            <div class="region-icon-fallback"><i class="fa-solid fa-fire"></i></div>
+          </div>
           <span class="region-element">Fire · Southern</span>
           <div class="region-name">Fire Nation</div>
           <div class="region-desc">Nomashae's Fire Nation region — fierce, industrious, and driven. Once a symbol of conflict in ATLA's world, here it represents passion, ambition, and renewal.</div>
